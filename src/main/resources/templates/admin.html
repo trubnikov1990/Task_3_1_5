@@ -103,7 +103,6 @@
                     <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Username</th>
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Age</th>
@@ -116,7 +115,6 @@
                     <tbody>
                     <tr th:each="user : ${listOfUsers}">
                       <td th:text="${user.id}"></td>
-                      <td th:text="${user.username}"></td>
                       <td th:text="${user.name}"></td>
                       <td th:text="${user.lastName}"></td>
                       <td th:text="${user.age}"></td>
@@ -143,14 +141,6 @@
                                     th:action="@{/admin/{id}(id=${user.id})}"
                                     th:object="${user}">
 
-                                <div class="mb-3">
-                                  <label for="usernameUpdate"
-                                         class="col-form-label">username</label>
-                                  <input type="text"
-                                         th:value="${user.username}" name="username"
-                                         class="form-control" id="usernameUpdate"
-                                         required minlength="2" maxlength="20"/>
-                                </div>
 
                                 <div class="modal-body">
                                   <div class="mb-3">
@@ -240,14 +230,6 @@
                               </div>
                               <form th:method="DELETE"
                                     th:action="@{/admin/{id}(id=${user.id})}">
-                                <div class="modal-body">
-                                  <div class="mb-3">
-                                    <label for="usernameDelete"
-                                           class="col-form-label">username</label>
-                                    <input type="text"
-                                           th:value="${user.username}" name="username"
-                                           class="form-control" id="usernameDelete" readonly/>
-                                  </div>
 
                                   <div class="modal-body">
                                     <div class="mb-3">
@@ -312,13 +294,7 @@
                   <div class="card-body text-center">
                     <form th:method="POST" th:action="@{/admin}" th:object="${user}">
 
-                      <label class="font-weight-bold" for="usernameNew">username</label>
-                      <br>
-                      <input class="form-control" type="text" required minlength="2" maxlength="15"
-                             name="username"
-                             id="usernameNew"
-                             style="height: 30px; width: 300px; margin: 0 auto"
-                             placeholder="username"/>
+
                       <br>
                       <label class="font-weight-bold" for="firstNameNew">name</label>
                       <br>

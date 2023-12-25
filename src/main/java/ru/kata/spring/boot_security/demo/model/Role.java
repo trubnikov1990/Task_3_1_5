@@ -23,13 +23,13 @@ public class Role implements GrantedAuthority {
   public Role() {
   }
 
-  @ManyToMany(mappedBy = "roleList")
-  private List<User> userList;
+//  @ManyToMany(mappedBy = "roleList")
+//  private List<User> userList;
 
   public Role(int id, String status, List<User> userList) {
     this.id = id;
     this.status = status;
-    this.userList = userList;
+//    this.userList = userList;
   }
 
   @Override
@@ -53,13 +53,13 @@ public class Role implements GrantedAuthority {
     this.status = status;
   }
 
-  public List<User> getUserList() {
-    return userList;
-  }
-
-  public void setUserList(List<User> userList) {
-    this.userList = userList;
-  }
+//  public List<User> getUserList() {
+//    return userList;
+//  }
+//
+//  public void setUserList(List<User> userList) {
+//    this.userList = userList;
+//  }
 
   @Override
   public String toString() {

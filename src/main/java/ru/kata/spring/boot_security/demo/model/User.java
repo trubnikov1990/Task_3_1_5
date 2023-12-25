@@ -29,10 +29,6 @@ public class User implements UserDetails {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "username")
-  @NotEmpty(message = "Name is not empty")
-  @Size(min = 2, max = 100, message = "Name should be from 2 to 100 characters")
-  private String username;
 
   @Column(name = "name")
   @NotEmpty(message = "name is not empty")
@@ -69,11 +65,10 @@ public class User implements UserDetails {
   )
   private List<Role> roleList;
 
-  public User(int id, String username, String name, String lastName, String email, int age,
+  public User(int id, String name, String lastName, String email, int age,
       String password,
       List<Role> roleList) {
     this.id = id;
-    this.username = username;
     this.name = name;
     this.lastName = lastName;
     this.email = email;
@@ -88,10 +83,6 @@ public class User implements UserDetails {
 
   public void setId(int id) {
     this.id = id;
-  }
-
-  public String getUsername() {
-    return username;
   }
 
   @Override
@@ -112,10 +103,6 @@ public class User implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
   }
 
   public String getName() {
@@ -150,6 +137,11 @@ public class User implements UserDetails {
 
   public String getPassword() {
     return password;
+  }
+
+  @Override
+  public String getUsername() {
+    return name;
   }
 
   public void setPassword(String password) {

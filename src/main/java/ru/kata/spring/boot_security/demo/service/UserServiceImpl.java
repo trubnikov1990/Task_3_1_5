@@ -34,20 +34,22 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public void updateUser(int id, User user) {
-    user.setId(id);
+  public void updateUser(User user) {
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     userRepository.save(user);
   }
 
   @Override
-  @Transactional(readOnly = true)
   public User showUser(int id) {
     return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
   }
 
   @Override
-  @Transactional(readOnly = true)
+  public User findByName(String username) {
+    return userRepository.findByName(username);
+  }
+
+  @Override
   public List<User> listUsers() {
     return userRepository.findAll();
   }

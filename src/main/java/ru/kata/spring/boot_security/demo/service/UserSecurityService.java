@@ -19,14 +19,12 @@ public class UserSecurityService implements UserDetailsService {
     this.userRepository = userRepository;
   }
 
-  public User findByName(String username) {
-    return userRepository.findByUsername(username);
-  }
+
 
   @Override
   @Transactional
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = findByName(username);
+  public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+    User user = userRepository.findByName(name);
     if (user == null) {
       throw new UsernameNotFoundException("User not found");
     }
